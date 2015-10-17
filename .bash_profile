@@ -1,5 +1,18 @@
 export TERM="xterm-color"
+
 alias ls="ls -G"
+alias ll="ls -FGlAhp"
+alias cp="cp -iv"
+alias mv="mv -iv"
+alias mkdir="mkdir -pv"
+alias less="less -FSRXc"
+alias ..="cd ../"
+alias ...="cd ../../"
+alias .3="cd ../../../"
+alias .4="cd ../../../../"
+alias .5="cd ../../../../../"
+alias ~="cd ~"
+
 
 # get current branch in git repo
 function parse_git_branch() {
