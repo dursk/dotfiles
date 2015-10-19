@@ -13,6 +13,20 @@ alias .4="cd ../../../../"
 alias .5="cd ../../../../../"
 alias ~="cd ~"
 
+# git aliases
+alias gs="git status"
+alias gd="git diff"
+alias gc="git commit"
+alias gcl="git branch --merged | grep -v \* | xargs git branch -D "
+alias gp="git pull"
+alias gf="git fetch"
+alias gl="git log"
+alias gr="git rebase -i HEAD^^"
+alias gr3="git rebase -i HEAD^^^"
+alias gr4="git rebase -i HEAD^^^^"
+alias gca="git checkout -- ."
+alias gcf="git commit -am 'f'"
+alias gcr="git commit -am 'f' & git rebase -i HEAD^^"
 
 # get current branch in git repo
 function parse_git_branch() {
