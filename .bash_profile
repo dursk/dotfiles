@@ -64,7 +64,8 @@ function parse_git_dirty {
 
 export PS1="\[\e[33m\]\u\[\e[m\]@\[\e[32m\]\h \[\e[m\]on \[\e[1;31m\]\`parse_git_branch\`\n\[\e[m\]\w \\$ "
 
-
+# Download git auto-completion script from:
+# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
