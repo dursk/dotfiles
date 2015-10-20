@@ -14,6 +14,7 @@ alias .5="cd ../../../../../"
 alias ~="cd ~"
 
 # git aliases
+alias ga="git add"
 alias gs="git status"
 alias gd="git diff"
 alias gc="git commit"
@@ -27,6 +28,8 @@ alias gr4="git rebase -i HEAD^^^^"
 alias gca="git checkout -- ."
 alias gcf="git commit -am 'f'"
 alias gcr="git commit -am 'f' & git rebase -i HEAD^^"
+alias gcd="git checkout develop & git pull"
+alias gpo="git push origin"
 
 # get current branch in git repo
 function parse_git_branch() {
