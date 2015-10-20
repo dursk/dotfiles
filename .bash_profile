@@ -27,7 +27,7 @@ alias gr3="git rebase -i HEAD^^^"
 alias gr4="git rebase -i HEAD^^^^"
 alias gca="git checkout -- ."
 alias gcf="git commit -am 'f'"
-alias gcr="git commit -am 'f' & git rebase -i HEAD^^"
+alias gcr="git commit -am 'f' && git rebase -i HEAD^^"
 alias gcd="git checkout develop & git pull"
 alias gpo="git push origin"
 
