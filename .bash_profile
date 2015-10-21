@@ -31,6 +31,8 @@ alias gcr="git commit -am 'f' && git rebase -i HEAD^^"
 alias gcd="git checkout develop & git pull"
 alias gpo="git push origin"
 
+alias jpp="python -m json.tool"
+
 # get current branch in git repo
 function parse_git_branch() {
     BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
