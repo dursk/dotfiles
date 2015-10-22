@@ -30,6 +30,8 @@ alias gcf="git commit -am 'f'"
 alias gcr="git commit -am 'f' && git rebase -i HEAD^^"
 alias gcd="git checkout develop & git pull"
 alias gpo="git push origin"
+alias gb="git branch"
+alias gcb="git checkout -b"
 
 alias jpp="python -m json.tool"
 
