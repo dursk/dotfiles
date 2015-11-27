@@ -90,3 +90,5 @@ export PS1="\[\e[33m\]\u\[\e[m\]@\[\e[32m\]\h \[\e[m\]on \[\e[1;31m\]\`parse_git
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
+
+alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
