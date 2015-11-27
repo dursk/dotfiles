@@ -92,3 +92,4 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
+EDITOR="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs"
