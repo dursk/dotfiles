@@ -24,6 +24,10 @@
 (show-paren-mode 1)
 ; Newline at end of file
 (setq require-final-newline t)
+; Highlight trailing whitespace
+(setq show-trailing-whitespace t)
+; Highlight empty lines at end of file
+(setq-default indicate-empty-lines t)
 
 
 ;; ----------------------------------------------
@@ -40,6 +44,8 @@
 
 (global-set-key (kbd "C-.") 'scroll-down-one-line)
 (global-set-key (kbd "C-,") 'scroll-up-one-line)
+
+(global-set-key (kbd "C-c m") 'comment-or-uncomment-region)
 
 
 ;; ----------------------------------------------
@@ -69,3 +75,20 @@
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+
+;; --------------------------------------------
+;; use-package config
+;; --------------------------------------------
+
+(use-package ag
+  :config
+  (setq ag-reuse-buffers 't))
+
+(use-package fiplr
+  :config
+  (global-set-key (kbd "C-x f") 'fiplr-find-file))
+
+(use-package magit)
+
+(use-package neotree)
