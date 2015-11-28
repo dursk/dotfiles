@@ -3,6 +3,7 @@
 !.global_gitignore
 !.emacs.d/
 !.gitignore
+!.pylintrc
 
 .emacs.d/*~
 .emacs.d/*.dat
