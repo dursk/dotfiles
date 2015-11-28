@@ -51,7 +51,12 @@
 (global-set-key (kbd "C-.") 'scroll-down-one-line)
 (global-set-key (kbd "C-,") 'scroll-up-one-line)
 
+
 (global-set-key (kbd "C-c m") 'comment-or-uncomment-region)
+
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
 
 
 ;; ----------------------------------------------
@@ -79,9 +84,6 @@
 (require 'use-package)
 (setq use-package-always-ensure t)
 
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
-
 
 ;; --------------------------------------------
 ;; use-package config
@@ -89,7 +91,8 @@
 
 (use-package ag
   :config
-  (setq ag-reuse-buffers 't))
+  (setq ag-reuse-buffers 't)
+  (global-set-key (kbd "C-m") 'ag))
 
 (use-package fiplr
   :config
