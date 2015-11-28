@@ -39,7 +39,7 @@
 
 ;; Fonts
 (set-face-attribute 'default nil :family "Monaco")
-(set-face-attribute 'default nil :height 120)
+(set-face-attribute 'default nil :height 130)
 
 
 ;; ----------------------------------------------
