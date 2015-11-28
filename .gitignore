@@ -3,3 +3,8 @@
 !.global_gitignore
 !.emacs.d
 !.gitignore
+
+.emacs.d/el-get/
+.emacs.d/elpa/
+.emacs.d/themes/
+.emacs.d/auto-save-list/
