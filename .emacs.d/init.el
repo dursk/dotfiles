@@ -1,3 +1,9 @@
+;;; init.el --- Summary
+
+;;; Commentary:
+
+;;; Code:
+
 ;; -----------------------------------------------
 ;; Basic customizations
 ;; -----------------------------------------------
@@ -16,8 +22,6 @@
 (blink-cursor-mode 0)
 ;; Turn ido mode on
 (ido-mode t)
-;; Turn on flexible matching
-(setq ido-enable-flex-matching t)
 ;; Wrap at 79 columns by default
 (setq-default fill-column 79)
 ;; Highlight open/closing parens
@@ -28,12 +32,14 @@
 (setq show-trailing-whitespace t)
 ;; Highlight empty lines at end of file
 (setq-default indicate-empty-lines t)
-;; Cause tab key to indent 4 places
-(setq c-basic-offset 4)
 ;; Interpret tab char as 4 places
 (setq tab-width 4)
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
+
+;; Fonts
+(set-face-attribute 'default nil :family "Monaco")
+(set-face-attribute 'default nil :height 120)
 
 
 ;; ----------------------------------------------
@@ -141,4 +147,5 @@
     :config
     (load-theme 'brin t)))
 
-;; init.el ends here
+(provide 'init)
+;;; init.el ends here
