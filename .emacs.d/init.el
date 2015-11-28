@@ -2,37 +2,37 @@
 ;; Basic customizations
 ;; -----------------------------------------------
 
-; Disable beep
+;; Disable beep
 (setq visible-bell t)
-; Hide scroll bars
+;; Hide scroll bars
 (set-scroll-bar-mode nil)
-; Hide toolbar
+;; Hide toolbar
 (tool-bar-mode -1)
-; Display line numbers
+;; Display line numbers
 (setq line-number-mode t)
-; Display column numbers
+;; Display column numbers
 (setq column-number-mode t)
-; Don't blink the cursor
+;; Don't blink the cursor
 (blink-cursor-mode 0)
-; Turn ido mode on
+;; Turn ido mode on
 (ido-mode t)
-; Turn on flexible matching
+;; Turn on flexible matching
 (setq ido-enable-flex-matching t)
-; Wrap at 79 columns by default
+;; Wrap at 79 columns by default
 (setq-default fill-column 79)
-; Highlight open/closing parens
+;; Highlight open/closing parens
 (show-paren-mode 1)
-; Newline at end of file
+;; Newline at end of file
 (setq require-final-newline t)
-; Highlight trailing whitespace
+;; Highlight trailing whitespace
 (setq show-trailing-whitespace t)
-; Highlight empty lines at end of file
+;; Highlight empty lines at end of file
 (setq-default indicate-empty-lines t)
-; Cause tab key to indent 4 places
+;; Cause tab key to indent 4 places
 (setq c-basic-offset 4)
-; Interpret tab char as 4 places
+;; Interpret tab char as 4 places
 (setq tab-width 4)
-; Insert spaces instead of tabs
+;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
 
 
@@ -57,6 +57,11 @@
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
+
+
+; Later on I rebind C-i to call 'ag.
+; This unbinds TAB from C-i.
+(global-set-key [tab] 'indent-for-tab-command)
 
 
 ;; ----------------------------------------------
@@ -89,15 +94,45 @@
 ;; use-package config
 ;; --------------------------------------------
 
+(use-package ace-jump-mode
+  :config
+  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
+
 (use-package ag
   :config
   (setq ag-reuse-buffers 't)
-  (global-set-key (kbd "C-m") 'ag))
+  (global-set-key (kbd "C-i") 'ag))
+
+(use-package auto-complete
+  :config
+  (global-auto-complete-mode t))
+
+(when (memq window-system '(mac ns))
+  (use-package exec-path-from-shell
+    :config
+    (exec-path-from-shell-initialize)))
 
 (use-package fiplr
   :config
   (global-set-key (kbd "C-x f") 'fiplr-find-file))
 
+;; Run the following command:
+;; M-x jedi:install-server RET
+;; on a new machine.
+(use-package jedi
+  :config
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (setq jedi:complete-on-dot t))
+
 (use-package magit)
 
 (use-package neotree)
+
+(use-package smex
+  :config
+  (global-set-key (kbd "M-x") 'smex))
+
+(if (display-graphic-p)
+  (use-package sublime-themes
+    :config
+    (load-theme 'brin t)))

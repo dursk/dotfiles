@@ -9,3 +9,5 @@
 .emacs.d/ido*
 .emacs.d/auto-save-list/
 .emacs.d/elpa/
+.emacs.d/.python-environments/
+.emacs.d/smex-items
