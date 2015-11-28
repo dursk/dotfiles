@@ -28,6 +28,12 @@
 (setq show-trailing-whitespace t)
 ; Highlight empty lines at end of file
 (setq-default indicate-empty-lines t)
+; Cause tab key to indent 4 places
+(setq c-basic-offset 4)
+; Interpret tab char as 4 places
+(setq tab-width 4)
+; Insert spaces instead of tabs
+(setq-default indent-tabs-mode nil)
 
 
 ;; ----------------------------------------------
