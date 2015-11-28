@@ -116,6 +116,10 @@
   :config
   (global-set-key (kbd "C-x f") 'fiplr-find-file))
 
+(use-package flycheck
+  :config
+  (global-flycheck-mode))
+
 ;; Run the following command:
 ;; M-x jedi:install-server RET
 ;; on a new machine.
@@ -136,3 +140,5 @@
   (use-package sublime-themes
     :config
     (load-theme 'brin t)))
+
+;; init.el ends here
