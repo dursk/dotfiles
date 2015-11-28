@@ -1,10 +1,11 @@
-*
+/*
 !.bash_profile
 !.global_gitignore
-!.emacs.d
+!.emacs.d/
 !.gitignore
 
-.emacs.d/el-get/
-.emacs.d/elpa/
-.emacs.d/themes/
+.emacs.d/*~
+.emacs.d/*.dat
+.emacs.d/ido*
 .emacs.d/auto-save-list/
+.emacs.d/elpa/
