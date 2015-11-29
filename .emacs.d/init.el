@@ -26,6 +26,8 @@
 (blink-cursor-mode 0)
 ;; Turn ido mode on
 (ido-mode t)
+;; Flex matching for ido
+(setq ido-enable-flex-matching t)
 ;; Wrap at 79 columns by default
 (setq-default fill-column 79)
 ;; Highlight open/closing parens
