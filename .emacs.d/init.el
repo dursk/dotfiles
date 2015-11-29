@@ -24,10 +24,6 @@
 (setq column-number-mode t)
 ;; Don't blink the cursor
 (blink-cursor-mode 0)
-;; Turn ido mode on
-(ido-mode t)
-;; Flex matching for ido
-(setq ido-enable-flex-matching t)
 ;; Wrap at 79 columns by default
 (setq-default fill-column 79)
 ;; Highlight open/closing parens
@@ -42,10 +38,40 @@
 (setq tab-width 4)
 ;; Insert spaces instead of tabs
 (setq-default indent-tabs-mode nil)
+;; Switch windows
+(global-set-key (kbd "M-o") 'other-window)
 
 ;; Fonts
 (set-face-attribute 'default nil :family "Monaco")
 (set-face-attribute 'default nil :height 130)
+
+
+;; ----------------------------------------------
+;; Ido mode
+;; ----------------------------------------------
+
+;; Turn ido mode on
+(ido-mode t)
+;; Flex matching for ido
+(defvar ido-enable-flex-matching)
+(setq ido-enable-flex-matching t)
+;; Ido everywhere
+(defvar ido-everywhere)
+(setq ido-everywhere t)
+;; Don't prompt for creating a new buffer
+(defvar ido-create-new-buffer)
+(setq ido-create-new-buffer 'always)
+
+
+;; ----------------------------------------------
+;; Whitespace mode
+;; ----------------------------------------------
+
+(require 'whitespace)
+(setq whitespace-line-column 79)
+(setq whitespace-style '(face lines-tail))
+
+(add-hook 'python-mode-hook 'whitespace-mode)
 
 
 ;; ----------------------------------------------
