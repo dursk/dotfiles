@@ -8,6 +8,10 @@
 ;; Basic customizations
 ;; -----------------------------------------------
 
+;; Disable welcome screen
+(setq inhibit-startup-message t)
+;; Get rid of scratch buffer message
+(setq initial-scratch-message "")
 ;; Disable beep
 (setq visible-bell t)
 ;; Hide scroll bars
