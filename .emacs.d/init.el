@@ -29,11 +29,11 @@
 ;; Highlight open/closing parens
 (show-paren-mode 1)
 ;; Newline at end of file
-(setq require-final-newline t)
+(setq require-final-newline 1)
 ;; Highlight trailing whitespace
-(setq show-trailing-whitespace t)
+(setq show-trailing-whitespace 1)
 ;; Highlight empty lines at end of file
-(setq-default indicate-empty-lines t)
+(setq-default indicate-empty-lines 1)
 ;; Interpret tab char as 4 places
 (setq tab-width 4)
 ;; Insert spaces instead of tabs
@@ -69,9 +69,10 @@
 
 (require 'whitespace)
 (setq whitespace-line-column 79)
-(setq whitespace-style '(face lines-tail))
+(setq whitespace-style '(face lines-tail trailing))
 
 (add-hook 'python-mode-hook 'whitespace-mode)
+(add-hook 'go-mode-hook 'whitespace-mode)
 
 
 ;; ----------------------------------------------
@@ -129,7 +130,7 @@
 
 
 ;; --------------------------------------------
-;; use-package config
+;; Packages
 ;; --------------------------------------------
 
 (use-package ace-jump-mode
@@ -157,6 +158,12 @@
 (use-package flycheck
   :config
   (global-flycheck-mode))
+
+(use-package go-mode
+  :config
+  (add-hook 'go-mode-hook
+            (lambda ()
+              (setq tab-width 4))))
 
 ;; Run the following command:
 ;; M-x jedi:install-server RET
