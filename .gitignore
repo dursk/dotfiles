@@ -12,3 +12,4 @@
 .emacs.d/elpa/
 .emacs.d/.python-environments/
 .emacs.d/smex-items
+.emacs.d/eshell/
