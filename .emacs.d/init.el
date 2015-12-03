@@ -118,6 +118,9 @@
 (defadvice windmove-right (before other-window-now activate)
   (when buffer-file-name (save-buffer)))
 
+;; Stop asking me about files changed on disk when I switch branches!
+(global-auto-revert-mode)
+
 
 ;; ----------------------------------------------
 ;; Mac specific settings
