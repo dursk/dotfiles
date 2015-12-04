@@ -22,8 +22,6 @@
 (setq line-number-mode t)
 ;; Display column numbers
 (setq column-number-mode t)
-;; Don't blink the cursor
-(blink-cursor-mode 0)
 ;; Highlight open/closing parens
 (show-paren-mode 1)
 ;; Newline at end of file
