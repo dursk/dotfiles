@@ -24,14 +24,10 @@
 (setq column-number-mode t)
 ;; Don't blink the cursor
 (blink-cursor-mode 0)
-;; Wrap at 79 columns by default
-(setq-default fill-column 79)
 ;; Highlight open/closing parens
 (show-paren-mode 1)
 ;; Newline at end of file
 (setq require-final-newline 1)
-;; Highlight trailing whitespace
-(setq show-trailing-whitespace 1)
 ;; Highlight empty lines at end of file
 (setq-default indicate-empty-lines 1)
 ;; Interpret tab char as 4 places
@@ -71,8 +67,7 @@
 (setq whitespace-line-column 79)
 (setq whitespace-style '(face lines-tail trailing))
 
-(add-hook 'python-mode-hook 'whitespace-mode)
-(add-hook 'go-mode-hook 'whitespace-mode)
+(global-whitespace-mode 1)
 
 
 ;; ----------------------------------------------
