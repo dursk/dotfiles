@@ -116,6 +116,11 @@
 (global-auto-revert-mode t)
 
 
+;; 2-space tab in js and jsx mode
+(add-hook `js-mode-hook (lambda() (setq tab-width 2)))
+(add-hook `jsx-mode-hook (lambda() (setq tab-width 2)))
+
+
 ;; ----------------------------------------------
 ;; Mac specific settings
 ;; ----------------------------------------------
@@ -140,6 +145,8 @@
 
 (require 'use-package)
 (setq use-package-always-ensure t)
+
+(load "~/.emacs.d/vendor/fireplace/fireplace")
 
 
 ;; --------------------------------------------
