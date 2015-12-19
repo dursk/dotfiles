@@ -81,6 +81,19 @@
 
 (add-hook 'org-mode-hook (lambda() (setq-local whitespace-line-column 100)))
 
+
+;; ----------------------------------------------
+;; Flyspell Mode (on mac: brew install ipsell)
+;; ----------------------------------------------
+
+;; Enable spell checking for all text-modes
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
+;; Spell checking in comments & strings
+(add-hook 'python-mode-hook (lambda () (flyspell-prog-mode)))
+
+
 ;; ----------------------------------------------
 ;; Advanced customizations
 ;; ----------------------------------------------
