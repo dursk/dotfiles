@@ -34,6 +34,8 @@
 (setq-default indent-tabs-mode nil)
 ;; Switch windows
 (global-set-key (kbd "M-o") 'other-window)
+;; Treat snake-case as one word
+(global-superword-mode t)
 
 ;; Fonts
 (set-face-attribute 'default nil :family "Monaco")
