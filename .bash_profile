@@ -32,6 +32,7 @@ alias gcd="git checkout develop && git pull"
 alias gpo="git push origin"
 alias gb="git branch"
 alias gcb="git checkout -b"
+alias gpom="git push origin master"
 
 alias jpp="python -m json.tool"
 
