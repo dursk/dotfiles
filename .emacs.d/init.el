@@ -144,11 +144,6 @@
 (global-auto-revert-mode t)
 
 
-;; 2-space tab in js and jsx mode
-(add-hook `js-mode-hook (lambda() (setq tab-width 2)))
-(add-hook `jsx-mode-hook (lambda() (setq tab-width 2)))
-
-
 ;; ----------------------------------------------
 ;; Mac specific settings
 ;; ----------------------------------------------
@@ -220,6 +215,13 @@
   :config
   (add-hook 'python-mode-hook 'jedi:setup)
   (setq jedi:complete-on-dot t))
+
+(use-package js2-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
+  (setq js2-basic-offset 2)
+)
 
 (use-package magit)
 
