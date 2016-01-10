@@ -96,3 +96,6 @@ alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
 EDITOR="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs"
 
 GOPATH=~/work
+
+# added by Anaconda2 2.4.1 installer
+export PATH="~/anaconda/bin:$PATH"
