@@ -36,6 +36,18 @@ alias gpom="git push origin master"
 
 alias jpp="python -m json.tool"
 
+# docker workflow
+alias dm=docker-machine
+alias dc=docker-compose
+alias dmq='eval "$(docker-machine env q)"'
+
+start-docker () {
+  docker-machine start q > /dev/null 2>&1;
+  eval "$(docker-machine env q)";
+}
+
+start-docker;
+
 # get current branch in git repo
 function parse_git_branch() {
     BRANCH=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
