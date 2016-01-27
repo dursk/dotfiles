@@ -144,6 +144,10 @@
 (global-auto-revert-mode t)
 
 
+;; css mode for .scss
+(add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+
+
 ;; ----------------------------------------------
 ;; Mac specific settings
 ;; ----------------------------------------------
