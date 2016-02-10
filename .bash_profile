@@ -35,6 +35,7 @@ alias gb="git branch"
 alias gcb="git checkout -b"
 alias gpom="git push origin master"
 alias guc="git reset --soft HEAD^ && git reset HEAD ."
+alias gwip="git commit -am 'WIP'"
 
 alias jpp="python -m json.tool"
 
