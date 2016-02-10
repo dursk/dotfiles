@@ -112,3 +112,13 @@ GOPATH=~/work
 
 # added by Anaconda2 2.4.1 installer
 export PATH="~/anaconda/bin:$PATH"
+
+# fancy autocompletion (for things like scp)
+. /etc/bash_completion
+
+# For use with https://github.com/stevemao/diff-so-fancy
+git config --global core.pager "diff-so-fancy | less --tabs=1,5 -R"
+git config --global color.diff-highlight.oldNormal "red bold"
+git config --global color.diff-highlight.oldHighlight "red bold 52"
+git config --global color.diff-highlight.newNormal "green bold"
+git config --global color.diff-highlight.newHighlight "green bold 22"
