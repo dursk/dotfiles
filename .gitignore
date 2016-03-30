@@ -4,6 +4,7 @@
 !.emacs.d/
 !.gitignore
 !.pylintrc
+!.config/
 
 .emacs.d/*~
 .emacs.d/*.dat
@@ -13,3 +14,6 @@
 .emacs.d/.python-environments/
 .emacs.d/smex-items
 .emacs.d/eshell/
+
+.config/fish/fish_history
+.config/fish/fishd*

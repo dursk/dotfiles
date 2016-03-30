@@ -42,6 +42,12 @@
 (set-face-attribute 'default nil :height 130)
 
 
+;; Fix gross El Capitan rendering issue.
+;; http://stuff-things.net/2015/10/05/emacs-visible-bell-work-around-on-os-x-el-capitan/
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
+
+
 ;; ----------------------------------------------
 ;; Ido mode
 ;; ----------------------------------------------
@@ -202,6 +208,8 @@
   :config
   (global-set-key (kbd "C-x f") 'fiplr-find-file))
 
+(use-package fish-mode)
+
 (use-package flycheck
   :config
   (global-flycheck-mode))
@@ -225,7 +233,13 @@
   (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
   (setq js2-basic-offset 2)
-)
+  )
+
+(use-package web-mode
+  :config
+  (add-hook 'web-mode-hook
+            (lambda ()
+              (setq tab-width 2))))
 
 (use-package magit)
 
