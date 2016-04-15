@@ -3,7 +3,7 @@
 	pager = diff-so-fancy | less --tabs=1,5 -R
 [user]
 	name = Matthew Madurski
-	email = mmadurski@managedbyq.com
+	email = matt@matthewmadurski.com
 	signingkey = ADAFB3A1
 [color "diff-highlight"]
 	oldNormal = red bold
