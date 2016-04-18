@@ -236,6 +236,10 @@
 
 (use-package markdown-mode)
 
+(use-package powerline
+  :config
+  (powerline-center-theme))
+
 (use-package web-mode
   :config
   (add-hook 'web-mode-hook
