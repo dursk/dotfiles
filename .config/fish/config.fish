@@ -58,7 +58,7 @@ function gf
     git fetch $argv
 end
 function gl
-    git log --oneline --graph $argv
+    git log $argv
 end
 function gr
     git rebase -i HEAD^^ $argv

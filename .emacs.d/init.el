@@ -152,6 +152,8 @@
 
 ;; css mode for .scss
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+(add-hook 'css-mode-hook (lambda() (setq tab-width 2)))
+(add-hook 'css-mode-hook (lambda() (setq css-indent-offset 2)))
 
 
 ;; ----------------------------------------------
