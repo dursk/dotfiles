@@ -111,14 +111,6 @@ function jpp
     python -m json.tool $argv
 end
 
-
-function start-docker
-    docker-machine start q > /dev/null 2>& 1
-    eval (docker-machine env q)
-end
-
-start-docker
-
 eval (python -m virtualfish)
 
 if set -q VIRTUAL_ENV
