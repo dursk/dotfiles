@@ -36,6 +36,8 @@
 (global-set-key (kbd "M-o") 'other-window)
 ;; Treat snake-case as one word
 (global-superword-mode t)
+;; Kill line command
+(global-set-key "\C-cd" 'kill-whole-line)
 
 ;; Fonts
 (set-face-attribute 'default nil :family "Monaco")
@@ -154,6 +156,41 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 (add-hook 'css-mode-hook (lambda() (setq tab-width 2)))
 (add-hook 'css-mode-hook (lambda() (setq css-indent-offset 2)))
+
+
+;; C-c C-k to copy line
+(defun copy-line (arg)
+  (interactive "p")
+  (let ((beg (line-beginning-position))
+        (end (line-end-position arg)))
+    (when mark-active
+      (if (> (point) (mark))
+          (setq beg (save-excursion (goto-char (mark)) (line-beginning-position)))
+        (setq end (save-excursion (goto-char (mark)) (line-end-position)))))
+    (if (eq last-command 'copy-line)
+        (kill-append (buffer-substring beg end) (< end beg))
+      (kill-ring-save beg end)))
+  (message "%d lines copied" arg))
+
+(global-set-key "\C-c\C-k" 'copy-line)
+
+
+;; C-c C-y to cut line
+(defun cut-line (arg)
+  (interactive "p")
+  (let ((beg (line-beginning-position))
+        (end (line-end-position arg)))
+    (when mark-active
+      (if (> (point) (mark))
+          (setq beg (save-excursion (goto-char (mark)) (line-beginning-position)))
+        (setq end (save-excursion (goto-char (mark)) (line-end-position)))))
+    (if (eq last-command 'cut-line)
+        (kill-append (buffer-substring beg end) (< end beg))
+      (kill-new (buffer-substring beg end)))
+    (delete-region beg end))
+  (message "%d lines copied" arg))
+
+(global-set-key "\C-c\C-y" 'cut-line)
 
 
 ;; ----------------------------------------------
