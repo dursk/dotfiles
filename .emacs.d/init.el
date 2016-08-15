@@ -285,7 +285,9 @@
             (lambda ()
               (setq tab-width 2))))
 
-(use-package magit)
+(use-package magit
+  :config
+  (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package neotree)
 

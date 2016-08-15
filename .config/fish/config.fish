@@ -76,8 +76,8 @@ function gcf
     git commit -am 'f' $argv
 end
 function gcr
-    git commit --fixup
-    and git rebase -i --autosquash
+    git commit -am 'fixup!'
+    and git rebase -i --autosquash HEAD^^
 end
 function gcd
     git checkout develop
