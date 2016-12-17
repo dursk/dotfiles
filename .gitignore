@@ -6,6 +6,7 @@
 !.gitignore
 !.pylintrc
 !.config/
+!.vimrc
 
 .emacs.d/*~
 .emacs.d/*.dat
