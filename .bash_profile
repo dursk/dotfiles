@@ -12,6 +12,10 @@ alias .3="cd ../../../"
 alias .4="cd ../../../../"
 alias .5="cd ../../../../../"
 alias ~="cd ~"
+alias g="egrep"
+alias p="ps auxw"
+alias pg="p | g"
+alias v="vim"
 
 # git aliases
 alias ga="git add"
@@ -38,18 +42,6 @@ alias guc="git reset --soft HEAD^ && git reset HEAD ."
 alias gwip="git commit -am 'WIP'"
 
 alias jpp="python -m json.tool"
-
-# docker workflow
-alias dm=docker-machine
-alias dc=docker-compose
-alias dmq='eval "$(docker-machine env q)"'
-
-start-docker () {
-  docker-machine start q > /dev/null 2>&1;
-  eval "$(docker-machine env q)";
-}
-
-start-docker;
 
 # get current branch in git repo
 function parse_git_branch() {
@@ -107,16 +99,7 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
-alias emacs="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs -nw"
-EDITOR="/usr/local/Cellar/emacs/24.5/Emacs.app/Contents/MacOS/Emacs"
-
-GOPATH=~/work
-
-# added by Anaconda2 2.4.1 installer
-export PATH="~/anaconda/bin:$PATH"
-
-# fancy autocompletion (for things like scp)
-. /etc/bash_completion
+EDITOR=vim
 
 # For use with https://github.com/stevemao/diff-so-fancy
 git config --global core.pager "diff-so-fancy | less --tabs=1,5 -R"
