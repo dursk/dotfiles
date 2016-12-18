@@ -4,7 +4,6 @@
 [user]
 	name = Matthew Madurski
 	email = matt@matthewmadurski.com
-	signingkey = ADAFB3A1
 [color "diff-highlight"]
 	oldNormal = red bold
 	oldHighlight = red bold 52
