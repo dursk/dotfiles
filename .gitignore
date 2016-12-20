@@ -9,6 +9,7 @@
 !.vimrc
 !.bashrc
 !.vim/
+!.iterm/
 
 .emacs.d/*~
 .emacs.d/*.dat

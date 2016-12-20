@@ -1,4 +1,4 @@
-export TERM="xterm-color"
+export TERM=xterm-256color
 
 alias ls="ls -G"
 alias ll="ls -FGlAhp"

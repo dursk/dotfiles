@@ -5,7 +5,9 @@
 filetype on
 
 " Enable syntax highlighting
-syntax on
+syntax enable
+set background=dark
+colorscheme solarized
 
 " Don't try to be vi compatible
 set nocompatible
