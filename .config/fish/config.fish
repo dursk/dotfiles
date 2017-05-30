@@ -42,6 +42,9 @@ end
 function ga
     git add $argv
 end
+function gaa
+    git add .
+end
 function gs
     git status $argv
 end
@@ -50,6 +53,9 @@ function gd
 end
 function gc
     git commit $argv
+end
+function gcam
+    git commit -am $argv
 end
 function gp
    git branch | grep -v "master" | xargs git branch -D
