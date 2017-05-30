@@ -35,7 +35,7 @@ function .5
     cd ../../../../../
 end
 function g
-   egrep
+   egrep $argv
 end
 
 # git aliases
