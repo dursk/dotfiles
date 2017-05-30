@@ -54,6 +54,9 @@ end
 function gc
     git commit $argv
 end
+function gco
+    git checkout $argv
+end
 function gcam
     git commit -am $argv
 end
