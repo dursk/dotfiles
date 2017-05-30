@@ -300,5 +300,7 @@
     :config
     (load-theme 'brin t)))
 
+(use-package yaml-mode)
+
 (provide 'init)
 ;;; init.el ends here
