@@ -35,7 +35,7 @@ function .5
     cd ../../../../../
 end
 function g
-   egrep $argv
+    egrep $argv
 end
 
 # git aliases
@@ -58,10 +58,10 @@ function gcam
     git commit -am $argv
 end
 function gp
-   git branch | grep -v "master" | xargs git branch -D
+    git branch | grep -v "master" | xargs git branch -D
 end
 function gpd
-   git branch | grep -v "develop" | xargs git branch -D
+    git branch | grep -v "develop" | xargs git branch -D
 end
 function gp
     git pull $argv
