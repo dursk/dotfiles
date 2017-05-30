@@ -34,6 +34,9 @@ end
 function .5
     cd ../../../../../
 end
+function g
+   egrep
+end
 
 # git aliases
 function ga
@@ -48,8 +51,11 @@ end
 function gc
     git commit $argv
 end
-function gcl
-    git branch --merged | grep -v \* | xargs git branch -D
+function gp
+   git branch | grep -v "master" | xargs git branch -D
+end
+function gpd
+   git branch | grep -v "develop" | xargs git branch -D
 end
 function gp
     git pull $argv
