@@ -41,7 +41,7 @@
 
 ;; Fonts
 (set-face-attribute 'default nil :family "Monaco")
-(set-face-attribute 'default nil :height 130)
+(set-face-attribute 'default nil :height 140)
 
 
 ;; Fix gross El Capitan rendering issue.
