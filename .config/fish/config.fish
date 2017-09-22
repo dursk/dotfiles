@@ -60,7 +60,7 @@ end
 function gcam
     git commit -am $argv
 end
-function gp
+function gpm
     git branch | grep -v "master" | xargs git branch -D
 end
 function gpd
