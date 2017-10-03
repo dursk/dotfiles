@@ -192,6 +192,20 @@
 
 (global-set-key "\C-c\C-y" 'cut-line)
 
+(defun xah-show-kill-ring ()
+  "Insert all `kill-ring' content in a new buffer.
+URL `http://ergoemacs.org/emacs/emacs_show_kill_ring.html'
+Version 2017-06-19"
+  (interactive)
+  (let (($buf (generate-new-buffer "untitled")))
+    (progn
+      (switch-to-buffer $buf)
+      (funcall 'fundamental-mode)
+      (setq buffer-offer-save t)
+      (dolist (x kill-ring )
+        (insert x "\n--------------------------------------------------\n\n"))
+      (goto-char (point-min)))))
+
 
 ;; ----------------------------------------------
 ;; Mac specific settings
@@ -275,15 +289,21 @@
 
 (use-package markdown-mode)
 
+(use-package multiple-cursors)
+
 (use-package powerline
   :config
   (powerline-center-theme))
 
 (use-package web-mode
   :config
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook
             (lambda ()
-              (setq tab-width 2))))
+              (setq tab-width 2)))
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode)))
 
 (use-package magit
   :config
@@ -304,5 +324,3 @@
 
 (provide 'init)
 ;;; init.el ends here
-
-
