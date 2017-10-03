@@ -289,8 +289,6 @@ Version 2017-06-19"
 
 (use-package markdown-mode)
 
-(use-package multiple-cursors)
-
 (use-package powerline
   :config
   (powerline-center-theme))
