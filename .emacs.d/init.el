@@ -318,7 +318,31 @@ Version 2017-06-19"
     :config
     (load-theme 'brin t)))
 
+(use-package transpose-mark)
+
 (use-package yaml-mode)
+
+(use-package yasnippet
+  :config
+  (yas-global-mode 1)
+  (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand)
+  (global-set-key [remap dabbrev-expand] 'hippie-expand))
+
+(use-package yasnippet-snippets)
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
