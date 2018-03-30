@@ -38,6 +38,12 @@
 (global-superword-mode t)
 ;; Kill line command
 (global-set-key "\C-cd" 'kill-whole-line)
+;; Put all backup (~) files in a single dir
+(setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
+(setq delete-old-versions t
+  kept-new-versions 6
+  kept-old-versions 2
+  version-control t)
 
 ;; Fonts
 (set-face-attribute 'default nil :family "Monaco")
