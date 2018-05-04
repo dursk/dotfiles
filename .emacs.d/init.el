@@ -263,6 +263,10 @@ Version 2017-06-19"
     :config
     (exec-path-from-shell-initialize)))
 
+(require 'expand-region
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+
 (use-package fiplr
   :config
   (global-set-key (kbd "C-x f") 'fiplr-find-file))
@@ -345,7 +349,7 @@ Version 2017-06-19"
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+    (expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
