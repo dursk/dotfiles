@@ -37,7 +37,7 @@
 ;; Treat snake-case as one word
 (global-superword-mode t)
 ;; Kill line command
-(global-set-key "\C-cd" 'kill-whole-line)
+(global-set-key (kbd "M-k") 'kill-whole-line)
 ;; Put all backup (~) files in a single dir
 (setq backup-directory-alist `(("." . "~/.emacs.d/.saves")))
 (setq delete-old-versions t
@@ -239,6 +239,14 @@ Version 2017-06-19"
 (setq use-package-always-ensure t)
 
 (load "~/.emacs.d/vendor/fireplace/fireplace")
+(load "~/.emacs.d/vendor/key-chord/key-chord")
+(key-chord-mode 1)
+
+(key-chord-define-global "xc" `save-buffer)
+(key-chord-define-global "fd" `ido-find-file)
+(key-chord-define-global "df" `ido-find-file)
+(key-chord-define-global "jk" `ido-switch-buffer)
+(key-chord-define-global "kj" `ido-switch-buffer)
 
 
 ;; --------------------------------------------
@@ -263,9 +271,11 @@ Version 2017-06-19"
     :config
     (exec-path-from-shell-initialize)))
 
-(require 'expand-region
+(use-package expand-region
   :config
-  (global-set-key (kbd "C-=") 'er/expand-region))
+  (global-set-key (kbd "C-=") 'er/expand-region)
+  (key-chord-define-global "w3" 'er/expand-region)
+  (key-chord-define-global "3w" 'er/expand-region))
 
 (use-package fiplr
   :config
@@ -349,7 +359,7 @@ Version 2017-06-19"
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+    (keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

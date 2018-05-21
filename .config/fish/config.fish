@@ -121,6 +121,9 @@ end
 function gwip
     git commit -am 'WIP'
 end
+function grm
+    git rebase master
+end
 
 function jpp
     python -m json.tool $argv
