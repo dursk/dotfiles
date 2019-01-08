@@ -301,12 +301,6 @@ Version 2017-06-19"
   (add-hook 'python-mode-hook 'jedi:setup)
   (setq jedi:complete-on-dot t))
 
-(use-package js2-mode
-  :config
-  (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
-  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
-  (setq js2-basic-offset 2))
-
 (use-package markdown-mode)
 
 (use-package powerline
@@ -328,6 +322,13 @@ Version 2017-06-19"
   (global-set-key (kbd "C-x g") 'magit-status))
 
 (use-package neotree)
+
+(use-package rjsx-mode
+  :config
+  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+  (setq js-switch-indent-offset 2)
+  (setq js-indent-level 2))
 
 (use-package smex
   :config
@@ -359,7 +360,7 @@ Version 2017-06-19"
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+    (wttrin selectric-mode pacmacs nyan-mode keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
