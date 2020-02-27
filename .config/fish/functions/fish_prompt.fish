@@ -3,6 +3,9 @@ function fish_prompt --description 'Write out the prompt'
 
   # User
   set_color 628797
+  if set -q VIRTUAL_ENV
+      echo -n -s (set_color DEB887) (basename "$VIRTUAL_ENV") "|" (set_color normal)
+  end
   echo -n (whoami)
   set_color normal
 

@@ -163,6 +163,13 @@
 (add-hook 'css-mode-hook (lambda() (setq tab-width 2)))
 (add-hook 'css-mode-hook (lambda() (setq css-indent-offset 2)))
 
+;; python3
+;; (custom-set-variables
+;;  ;; '(flycheck-python-flake8-executable "python3")
+;;  '(flycheck-python-pycompile-executable "python3")
+;;  '(flycheck-python-pylint-executable nil)
+;;  )
+
 
 ;; C-c C-k to copy line
 (defun copy-line (arg)
@@ -314,8 +321,7 @@ Version 2017-06-19"
   (setq web-mode-code-indent-offset 2)
   (add-hook 'web-mode-hook
             (lambda ()
-              (setq tab-width 2)))
-  (add-to-list 'auto-mode-alist '("\\.jsx\\'" . web-mode)))
+              (setq tab-width 2))))
 
 (use-package magit
   :config
@@ -341,6 +347,11 @@ Version 2017-06-19"
   (setq js-switch-indent-offset 2)
   (setq js-indent-level 2))
 
+(use-package prettier-js
+  :config
+  (add-hook 'web-mode-hook 'prettier-js-mode)
+  (add-hook 'rjsx-mode-hook 'prettier-js-mode))
+
 (use-package smex
   :config
   (global-set-key (kbd "M-x") 'smex))
@@ -364,6 +375,11 @@ Version 2017-06-19"
 
 (use-package yasnippet-snippets)
 
+(use-package python-black
+  :demand t
+  :after python
+  :config (add-hook 'python-mode-hook (lambda () (python-black-on-save-mode))))
+
 (provide 'init)
 ;;; init.el ends here
 (custom-set-variables
@@ -373,7 +389,7 @@ Version 2017-06-19"
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (prettier-js wttrin selectric-mode pacmacs nyan-mode keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+    (reformatter python-black prettier-js wttrin selectric-mode pacmacs nyan-mode keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -381,3 +397,4 @@ Version 2017-06-19"
  ;; If there is more than one, they won't work right.
  )
 (put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
