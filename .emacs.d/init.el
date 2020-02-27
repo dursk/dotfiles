@@ -323,6 +323,17 @@ Version 2017-06-19"
 
 (use-package neotree)
 
+(use-package prettier-js
+  :config (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook 'prettier-js-mode)
+  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
+  )
+
+(use-package python-black
+  :demand t
+  :after python
+  :config (add-hook 'python-mode-hook 'python-black-on-save-mode))
+
 (use-package rjsx-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
@@ -333,6 +344,8 @@ Version 2017-06-19"
 (use-package smex
   :config
   (global-set-key (kbd "M-x") 'smex))
+
+(use-package solidity-mode)
 
 (if (display-graphic-p)
   (use-package sublime-themes
@@ -360,10 +373,11 @@ Version 2017-06-19"
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (wttrin selectric-mode pacmacs nyan-mode keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+    (prettier-js wttrin selectric-mode pacmacs nyan-mode keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+(put 'upcase-region 'disabled nil)
