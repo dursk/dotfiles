@@ -142,5 +142,9 @@ end
 # status --is-interactive; and source (pyenv init -| psub)
 # status --is-interactive; and source (pyenv virtualenv-init - | psub)
 
+
+set -g fish_user_paths "/usr/local/opt/qt/bin" $fish_user_paths
+
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dursk/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/dursk/Downloads/google-cloud-sdk/path.fish.inc'; end
+if [ -f '/Users/matt/google-cloud-sdk/path.fish.inc' ]; . '/Users/matt/google-cloud-sdk/path.fish.inc'; end
+set -g fish_user_paths "/usr/local/opt/node@10/bin" $fish_user_paths
