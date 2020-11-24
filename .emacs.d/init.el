@@ -49,7 +49,6 @@
 (set-face-attribute 'default nil :family "Monaco")
 (set-face-attribute 'default nil :height 140)
 
-
 ;; Fix gross El Capitan rendering issue.
 ;; http://stuff-things.net/2015/10/05/emacs-visible-bell-work-around-on-os-x-el-capitan/
 (setq visible-bell nil)
@@ -125,18 +124,14 @@
 (global-set-key (kbd "C-.") 'scroll-down-one-line)
 (global-set-key (kbd "C-,") 'scroll-up-one-line)
 
-
 (global-set-key (kbd "C-c m") 'comment-or-uncomment-region)
-
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
-
 ;; Later on I rebind C-i to call 'ag.
 ;; This unbinds TAB from C-i.
 (global-set-key [tab] 'indent-for-tab-command)
-
 
 ;; automatically save buffers associated with files on buffer switch
 ;; and on windows switch
@@ -157,18 +152,10 @@
 ;; Stop asking me about files changed on disk when I switch branches!
 (global-auto-revert-mode t)
 
-
 ;; css mode for .scss
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
 (add-hook 'css-mode-hook (lambda() (setq tab-width 2)))
 (add-hook 'css-mode-hook (lambda() (setq css-indent-offset 2)))
-
-;; python3
-;; (custom-set-variables
-;;  ;; '(flycheck-python-flake8-executable "python3")
-;;  '(flycheck-python-pycompile-executable "python3")
-;;  '(flycheck-python-pylint-executable nil)
-;;  )
 
 
 ;; C-c C-k to copy line
@@ -233,18 +220,22 @@ Version 2017-06-19"
 ;; Package Configuration
 ;; ----------------------------------------------
 
+(require 'package)
 (setq package-archives
-      '(("gnu" . "http://elpa.gnu.org/packages/")
-	("marmalade" . "http://marmalade-repo.org/packages/")
-	("melpa" . "http://melpa.milkbox.net/packages/")))
-
-(add-to-list 'load-path "~/.emacs.d/vendor/use-package/")
-
+      '(("melpa" . "http://melpa.org/packages/")
+        ("gnu" . "http://elpa.gnu.org/packages/")
+	    ("marmalade" . "http://marmalade-repo.org/packages/")))
 (package-initialize)
 
-(require 'use-package)
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  ;;(add-to-list 'load-path "~/.emacs.d/vendor/use-package/")
+  (require 'use-package))
+
 (setq use-package-always-ensure t)
 
+(load "~/.emacs.d/vendor/ember-mode/ember-mode")
 (load "~/.emacs.d/vendor/fireplace/fireplace")
 (load "~/.emacs.d/vendor/key-chord/key-chord")
 (key-chord-mode 1)
@@ -255,18 +246,37 @@ Version 2017-06-19"
 (key-chord-define-global "jk" `ido-switch-buffer)
 (key-chord-define-global "kj" `ido-switch-buffer)
 
+;; tide setup (typescript mode)
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+(add-hook 'web-mode-hook
+      (lambda ()
+        (when (string-equal "tsx" (file-name-extension buffer-file-name))
+          (setup-tide-mode))))
 
 ;; --------------------------------------------
 ;; Packages
 ;; --------------------------------------------
 
-(use-package ace-jump-mode
-  :config
-  (define-key global-map (kbd "C-c SPC") 'ace-jump-mode))
-
 (use-package ag
   :config
   (setq ag-reuse-buffers 't)
+  (setq ag-arguments '("--ignore-dir" "dist" "--ignore-dir" "node_modules"))
   (global-set-key (kbd "C-i") 'ag))
 
 (use-package auto-complete
@@ -300,14 +310,6 @@ Version 2017-06-19"
             (lambda ()
               (setq tab-width 4))))
 
-;; Run the following command:
-;; M-x jedi:install-server RET
-;; on a new machine.
-(use-package jedi
-  :config
-  (add-hook 'python-mode-hook 'jedi:setup)
-  (setq jedi:complete-on-dot t))
-
 (use-package markdown-mode)
 
 (use-package powerline
@@ -323,34 +325,12 @@ Version 2017-06-19"
             (lambda ()
               (setq tab-width 2))))
 
-(use-package magit
-  :config
-  (global-set-key (kbd "C-x g") 'magit-status))
-
-(use-package neotree)
-
-(use-package prettier-js
-  :config (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
-  (add-hook 'rjsx-mode-hook 'prettier-js-mode)
-  )
-
-(use-package python-black
-  :demand t
-  :after python
-  :config (add-hook 'python-mode-hook 'python-black-on-save-mode))
-
 (use-package rjsx-mode
   :config
   (add-to-list 'auto-mode-alist '("\\.jsx\\'" . rjsx-mode))
   (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
   (setq js-switch-indent-offset 2)
   (setq js-indent-level 2))
-
-(use-package prettier-js
-  :config
-  (add-hook 'web-mode-hook 'prettier-js-mode)
-  (add-hook 'rjsx-mode-hook 'prettier-js-mode))
 
 (use-package smex
   :config
@@ -363,17 +343,17 @@ Version 2017-06-19"
     :config
     (load-theme 'brin t)))
 
+(use-package tide
+  :ensure t
+  :after (typescript-mode company flycheck)
+  :hook
+  (typescript-mode . tide-setup)
+  (typescript-mode . tide-hl-identifier-mode)
+  (before-save . tide-format-before-save))
+
 (use-package transpose-mark)
 
 (use-package yaml-mode)
-
-(use-package yasnippet
-  :config
-  (yas-global-mode 1)
-  (add-to-list 'hippie-expand-try-functions-list 'yas-hippie-try-expand)
-  (global-set-key [remap dabbrev-expand] 'hippie-expand))
-
-(use-package yasnippet-snippets)
 
 (use-package python-black
   :demand t
@@ -388,13 +368,10 @@ Version 2017-06-19"
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   (quote
-    (reformatter python-black prettier-js wttrin selectric-mode pacmacs nyan-mode keychord expand-region elmacro dockerfile-mode yasnippet-snippets yasnippet rjsx-mode transpose-mark jade-mode yaml-mode web-mode tidy sublime-themes smex powerline nginx-mode neotree markdown-mode magit js2-mode jedi handlebars-mode groovy-mode go-mode flycheck fish-mode fiplr exec-path-from-shell ag ace-jump-mode))))
+   '(python-black yaml-mode transpose-mark tide web-mode use-package sublime-themes solidity-mode smex rjsx-mode powerline markdown-mode go-mode flycheck fish-mode fiplr expand-region exec-path-from-shell auto-complete ag)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)
+ '(default ((t (:background nil)))))
