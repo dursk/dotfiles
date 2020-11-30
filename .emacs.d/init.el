@@ -268,6 +268,7 @@ Version 2017-06-19"
       (lambda ()
         (when (string-equal "tsx" (file-name-extension buffer-file-name))
           (setup-tide-mode))))
+(setq tide-format-options '(:indentSize 2 :tabSize 2))
 
 ;; --------------------------------------------
 ;; Packages
@@ -276,7 +277,7 @@ Version 2017-06-19"
 (use-package ag
   :config
   (setq ag-reuse-buffers 't)
-  (setq ag-arguments '("--ignore-dir" "dist" "--ignore-dir" "node_modules"))
+  (setq ag-arguments '("--ignore-dir" "dist" "--ignore-dir" "node_modules" "--ignore-dir" "@better"))
   (global-set-key (kbd "C-i") 'ag))
 
 (use-package auto-complete
@@ -349,7 +350,7 @@ Version 2017-06-19"
   :hook
   (typescript-mode . tide-setup)
   (typescript-mode . tide-hl-identifier-mode)
-  (before-save . tide-format-before-save))
+  (before-save . tide-format-before-save)  )
 
 (use-package transpose-mark)
 
